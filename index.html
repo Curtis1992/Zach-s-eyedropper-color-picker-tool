@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Zach's Color Selecter</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+<body>
+    <h1>Zach's Eye Dropper Color Tool</h1>
+    <div id="eye-dropper">
+      <label for="eye-dropper-button">
+        Click the button and then pick a color from anywhere on the screen:
+      </label>
+      <button id="eye-dropper-button">Pick Color</button>
+      <div id="picked-color"></div>
+      <p id="color-label"></p>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+<script>
+  if (typeof EyeDropper !== "function") {
+    $("#eye-dropper").text("EyeDropper API not supported in this browser.");
+  } else {
+    $("#eye-dropper-button").click(() => {
+      const eyedropper = new EyeDropper();
+      eyedropper.open().then(result => {
+        const color = result.sRGBHex;
+        console.log(`${color}`);
+        $("#picked-color").css("background-color", `${color}`);
+        $("#color-label").text(`Color: ${color}`);
+      }).catch(err => {
+        console.error("Error picking color:", err);
+      })
+    });
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+body {
+	text-align: center;
+}
+
+div {
+	margin: auto;
+}
+
+#picked-color {
+	width: 50px;
+	height: 50px;
+	margin-top: 10px;
+	border: 1px solid #000;
+}
